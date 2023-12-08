@@ -1,12 +1,6 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+'use client';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Create Next App',
-  description: 'Genersated by create next app',
-};
+import './globals.css';
 
 export default function RootLayout({
   children,
@@ -14,8 +8,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>{children}</body>
+    <html className="h-full">
+      <head></head>
+      <body className="h-full overscroll-none">
+        <div className="m-auto h-full max-w-md font-sans">{children}</div>
+      </body>
     </html>
   );
 }

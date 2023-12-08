@@ -1,5 +1,5 @@
 {
-  "name": "nextjs",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/lodash.clamp": "^4.0.9",
+    "@use-gesture/react": "^10.3.0",
+    "axios": "^1.6.0",
+    "browser-image-compression": "^2.0.2",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "react-spring": "^9.7.3",
+    "react-use-measure": "^2.1.1",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "13.5.6",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5"
   }
 }

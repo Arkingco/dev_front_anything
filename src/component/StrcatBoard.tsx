@@ -56,7 +56,6 @@ const StrcatBoard = ({
                 key={content.id}
                 content={content}
                 boardId={board.id}
-                lineWeight=""
               />
             );
           })}

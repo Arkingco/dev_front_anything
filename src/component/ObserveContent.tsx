@@ -9,17 +9,10 @@ interface props {
   content: content;
   boardId: string;
   isAdd: boolean;
-  lineWeight: string;
   boardTheme: 'strcat' | 'calm' | 'green' | 'cyan';
 }
 
-const ObserveContent = ({
-  content,
-  boardId,
-  isAdd,
-  boardTheme,
-  lineWeight,
-}: props) => {
+const ObserveContent = ({ content, boardId, isAdd }: props) => {
   const ref = useRef<HTMLHeadingElement | null>(null);
   const [observe, setObserve] = useRecoilState(observeState);
   const [card, setCard] = useState(false);
@@ -49,14 +42,14 @@ const ObserveContent = ({
   }, []);
 
   return (
-    <div className={` leading-[23px] text-[18px]`}>
+    <div className={` leading-[25px] text-[18px]`}>
       <div
         ref={ref}
         className={`inline
       ${
         card
-          ? ` w-full opacity-100 transition-all bg-sumilee-strcat-text-highlight font-semibold text-[18px]`
-          : ` w-full opacity-30 transition-all font-medium text-blue-50 `
+          ? ` w-full opacity-100 transition-all   bg-sumilee-strcat-text-highlight font-semibold text-[18px] pt-[3px] `
+          : ` w-full opacity-30 transition-all font-medium text-blue-50 [p-4px]`
       }
     `}
       >

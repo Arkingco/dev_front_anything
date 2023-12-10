@@ -51,7 +51,6 @@ const StrcatBoard = ({ board, isAdd }: Props) => {
                 key={content.id}
                 content={content}
                 boardId={board.id}
-                lineWeight=""
               />
             );
           })}

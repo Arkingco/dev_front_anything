@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 
@@ -9,33 +9,22 @@ interface props {
   content: content;
   boardId: string;
   isAdd: boolean;
-  lineWeight: string;
   boardTheme: 'strcat' | 'calm' | 'green' | 'cyan';
 }
 
-const ObserveContent = ({
-  content,
-  boardId,
-  isAdd,
-  boardTheme,
-  lineWeight,
-}: props) => {
+const ObserveContent = ({ content, boardId, isAdd }: props) => {
   const ref = useRef<HTMLHeadingElement | null>(null);
   const [observe, setObserve] = useRecoilState(observeState);
+  const [card, setCard] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(({ isIntersecting }) => {
           if (!isAdd && isIntersecting) {
             console.log('in here');
-            setObserve(() => ({
-              boardId: boardId,
-              contentId: content.id,
-              photoUrl: content.photoUrl,
-              writer: content.writer,
-            }));
+            setCard(true);
           } else {
-            console.log('in out');
+            setCard(false);
           }
         });
       },
@@ -53,36 +42,19 @@ const ObserveContent = ({
   }, []);
 
   return (
-    <div className={`${lineWeight} text-[18px]`}>
+    <div className={` leading-[25px] text-[18px]`}>
       <div
         ref={ref}
         className={`inline
       ${
-        !isAdd &&
-        observe.boardId === boardId &&
-        observe.contentId === content.id
-          ? ` w-full opacity-100 transition-all bg-sumilee-strcat-text-highlight font-semibold p-[1px]`
-          : ` w-full opacity-30 transition-all font-medium text-blue-50 `
+        card
+          ? ` w-full opacity-100 transition-all   bg-sumilee-strcat-text-highlight font-semibold`
+          : ` w-full opacity-30 transition-all font-medium text-blue-50`
       }
     `}
       >
         {content.text}
       </div>
-      {!isAdd &&
-        observe.boardId === boardId &&
-        observe.contentId === content.id && (
-          <div
-            className={`absolute right-[22px] z-10 mt-[1px] animate-slide pl-[2px]  text-white opacity-100`}
-          >
-            <div
-              className={`relative top-[-3px] z-20 w-full whitespace-pre-wrap `}
-            >
-              <div className={`relative top-[3px]`}>{`From: ${
-                observe.writer.length ? observe.writer : '익명의 스트링캣'
-              } `}</div>
-            </div>
-          </div>
-        )}
     </div>
   );
 };

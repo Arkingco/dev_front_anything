@@ -25,7 +25,7 @@ const ObserveContent = ({
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(({ isIntersecting, boundingClientRect }) => {
+        entries.forEach(({ isIntersecting }) => {
           if (!isAdd && isIntersecting) {
             console.log('in here');
             setObserve(() => ({
@@ -40,8 +40,8 @@ const ObserveContent = ({
         });
       },
       {
-        rootMargin: '-30% 0% -65% 0%',
-        threshold: [],
+        rootMargin: '-30% 0% -70% 0%',
+        threshold: [0],
       },
     );
     if (ref.current) {
@@ -61,7 +61,7 @@ const ObserveContent = ({
         !isAdd &&
         observe.boardId === boardId &&
         observe.contentId === content.id
-          ? ` w-full opacity-100 transition-all bg-sumilee-strcat-text-highlight font-semibold text-[18px]`
+          ? ` w-full opacity-100 transition-all bg-sumilee-strcat-text-highlight font-semibold p-[1px]`
           : ` w-full opacity-30 transition-all font-medium text-blue-50 `
       }
     `}

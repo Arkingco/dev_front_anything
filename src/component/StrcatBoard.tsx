@@ -22,13 +22,8 @@ interface Props {
   paramsId?: string;
 }
 
-const StrcatBoard = ({
-  board,
-  isAdd,
-  setIsAdd,
-  isPersonal,
-  paramsId,
-}: Props) => {
+require('intersection-observer');
+const StrcatBoard = ({ board, isAdd }: Props) => {
   const [observe, setObserve] = useRecoilState(observeState);
   const [content, setContent] = useState<content[]>([]);
 

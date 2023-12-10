@@ -1,5 +1,7 @@
 'use client';
 
+import { RecoilRoot } from 'recoil';
+
 import './globals.css';
 
 export default function RootLayout({
@@ -11,7 +13,9 @@ export default function RootLayout({
     <html className="h-full">
       <head></head>
       <body className="h-full overscroll-none">
-        <div className="m-auto h-full max-w-md font-sans">{children}</div>
+        <div className="m-auto h-full max-w-md ">
+          <RecoilRoot>{children}</RecoilRoot>
+        </div>
       </body>
     </html>
   );

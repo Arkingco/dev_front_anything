@@ -9,10 +9,17 @@ interface props {
   content: content;
   boardId: string;
   isAdd: boolean;
+  lineWeight: string;
   boardTheme: 'strcat' | 'calm' | 'green' | 'cyan';
 }
 
-const ObserveContent = ({ content, boardId, isAdd, boardTheme }: props) => {
+const ObserveContent = ({
+  content,
+  boardId,
+  isAdd,
+  boardTheme,
+  lineWeight,
+}: props) => {
   const ref = useRef<HTMLHeadingElement | null>(null);
   const [observe, setObserve] = useRecoilState(observeState);
   useEffect(() => {
@@ -33,7 +40,7 @@ const ObserveContent = ({ content, boardId, isAdd, boardTheme }: props) => {
         });
       },
       {
-        rootMargin: '-30% 0% -70% 0%',
+        rootMargin: '-30% 0% -65% 0%',
         threshold: [],
       },
     );
@@ -46,7 +53,7 @@ const ObserveContent = ({ content, boardId, isAdd, boardTheme }: props) => {
   }, []);
 
   return (
-    <div className=" leading-[25px] text-[18px]">
+    <div className={`${lineWeight} text-[18px]`}>
       <div
         ref={ref}
         className={`inline
